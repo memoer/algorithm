@@ -1,4 +1,4 @@
-# 인강 문제 풀이
+# 강의용
 # https://www.acmicpc.net/problem/2920 - 음계
 
 arr = list(map(int, input().split()))

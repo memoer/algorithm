@@ -1,14 +1,15 @@
+# 복습
 n = int(input())
+count = 1
 stack = []
 result = []
-count = 1
 for _ in range(n):
     data = int(input())
-    while count <= data:
+    while data >= count:
         stack.append(count)
-        result.append("+")
         count += 1
-    if stack[-1] == data:
+        result.append("+")
+    if data == stack[-1]:
         stack.pop()
         result.append("-")
     else:

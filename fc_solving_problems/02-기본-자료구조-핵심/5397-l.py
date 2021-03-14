@@ -1,3 +1,5 @@
+# key-logger
+# 강의
 n = int(input())
 for _ in range(n):
     case = input()

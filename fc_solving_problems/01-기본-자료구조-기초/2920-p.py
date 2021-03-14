@@ -1,5 +1,5 @@
+# 직접 구현
 # https://www.acmicpc.net/problem/2920 - 음계
-# 직접 구현한 것
 arr = list(map(int, input().split()))
 tmp = arr[0]
 msg = ""
