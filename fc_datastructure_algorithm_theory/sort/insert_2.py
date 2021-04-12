@@ -16,4 +16,3 @@ data = [random.randint(0, 100) for _ in range(0, 5)]
 print(data)
 insert_sort(data)
 print(data)
-

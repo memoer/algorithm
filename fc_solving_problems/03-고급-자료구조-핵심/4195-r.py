@@ -1,10 +1,10 @@
 def find(x: str) -> str:
-    if x == parent[x]:
-        return x
+    if parent[x] == x:
+        return parent[x]
     else:
-        root = find(parent[x])
-        parent[x] = root
-        return root
+        root_x = find(parent[x])
+        parent[x] = root_x
+        return root_x
 
 
 def union(x: str, y: str):
@@ -15,12 +15,9 @@ def union(x: str, y: str):
         count[root_y] += count[root_x]
 
 
-n = int(input())
-for _ in range(n):
-    parent = dict()
-    count = dict()
-    f = int(input())
-    for _ in range(f):
+for _ in range(int(input())):
+    count, parent = dict(), dict()
+    for _ in range(int(input())):
         x, y = input().split()
         if not x in parent:
             parent[x] = x
