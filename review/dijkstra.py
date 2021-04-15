@@ -10,19 +10,21 @@ graph = {
 }
 
 
-def dijkstra(graph: dict, start_node) -> dict:
-    distances = {node: float("inf") if start_node != node else 0 for node in graph.keys()}
-    queue = []
-    heapq.heappush(queue, [start_node, distances[start_node]])
+def dijkstra(graph: dict, start_node: str) -> dict:
+    queue = [[start_node, 0]]
+    distances = {node: float("inf") if node != start_node else 0 for node in graph.keys()}
+    heapq.heapify(queue)
+    track = {node: [] for node in graph.keys()}
     while queue:
-        idx += 1
-        node, distance = queue.pop(0)
-        for (n, d) in graph[node].items():
-            sum_d = distance + d
-            if sum_d < distances[n]:
-                distances[n] = sum_d
-                heapq.heappush(queue, [n, sum_d])
-    return distances
+        current_node, current_distance = heapq.heappop(queue)
+        for adjacent_node, adjacent_distance in graph[current_node].items():
+            sum_distance = adjacent_distance + current_distance
+            if sum_distance < distances[adjacent_node]:
+                track[adjacent_node] = track[current_node] + [adjacent_node]
+                distances[adjacent_node] = sum_distance
+                heapq.heappush(queue, [adjacent_node, sum_distance])
+    return distances, track
 
 
-print(dijkstra(graph, "A"))
+distances, track = dijkstra(graph, "A")
+print(track)
