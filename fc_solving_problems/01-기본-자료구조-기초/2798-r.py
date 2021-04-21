@@ -1,12 +1,11 @@
-# 복습
 n, m = map(int, input().split())
-data = list(map(int, input().split()))
+card_list = list(map(int, input().split()))
 result = 0
 
-for i in range(len(data)):
-    for j in range(i + 1, len(data)):
-        for k in range(j + 1, len(data)):
-            temp = data[i] + data[j] + data[k]
-            if temp <= m and temp > result:
-                result = temp
+for i in range(n - 2):
+    for j in range(i + 1, n - 1):
+        for k in range(j + 1, n):
+            sum_card = card_list[i] + card_list[j] + card_list[k]
+            if sum_card > result and sum_card <= m:
+                result = sum_card
 print(result)
