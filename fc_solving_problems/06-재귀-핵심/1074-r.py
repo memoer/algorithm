@@ -1,29 +1,31 @@
-def resolve(n, x, y):
-    global result
-    if n == 2:
-        if x == X and y == Y:
-            print(result)
-            return
-        result += 1
-        if x == X and y + 1 == Y:
-            print(result)
-            return
-        result += 1
-        if x + 1 == X and y == Y:
-            print(result)
-            return
-        result += 1
-        if x + 1 == X and y + 1 == Y:
-            print(result)
-            return
-        result += 1
-        return
-    resolve(n / 2, x, y)
-    resolve(n / 2, x, y + n / 2)
-    resolve(n / 2, x + n / 2, y)
-    resolve(n / 2, x + n / 2, y + n / 2)
-
-
+# https://velog.io/@ckstn0778/%EB%B0%B1%EC%A4%80-1074%EB%B2%88-Z-1-Python
+n, r, c = map(int, input().split())
 result = 0
-N, X, Y = map(int, input().split())
-resolve(2 ** N, 0, 0)
+while n > 1:
+    ran = 2 ** (n - 1)
+    if r >= ran:
+        if c >= ran:
+            result += 3 * (4 ** (n - 1))
+            r -= ran
+            c -= ran
+        else:
+            result += 2 * (4 ** (n - 1))
+            r -= ran
+    else:
+        if c >= ran:
+            result += 1 * (4 ** (n - 1))
+            c -= ran
+        else:
+            pass
+    n -= 1
+
+if r == 0:
+    if c == 0:
+        print(result)
+    else:
+        print(result + 1)
+else:
+    if c == 0:
+        print(result + 2)
+    else:
+        print(result + 3)
