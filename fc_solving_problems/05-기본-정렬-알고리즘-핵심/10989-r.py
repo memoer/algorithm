@@ -1,9 +1,10 @@
 import sys
 
 n = int(input())
-arr = [0] * 10001
+counting = [0] * 10001
 for _ in range(n):
-    arr[int(sys.stdin.readline())] += 1
-for i in range(len(arr)):
-    for _ in range(arr[i]):
-        print(i)
+    n = int(sys.stdin.readline())
+    counting[n] += 1
+for idx, count in enumerate(counting):
+    for i in range(count):
+        print(idx)

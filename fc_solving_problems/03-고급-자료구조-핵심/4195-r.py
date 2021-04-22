@@ -1,29 +1,31 @@
-def find(x: str) -> str:
-    if parent[x] == x:
-        return parent[x]
-    else:
-        root_x = find(parent[x])
-        parent[x] = root_x
-        return root_x
+n = int(input())
 
 
-def union(x: str, y: str):
-    root_x = find(x)
-    root_y = find(y)
-    if root_x != root_y:
-        parent[root_x] = root_y
-        count[root_y] += count[root_x]
+def find(f: str) -> str:
+    if parent[f] != f:
+        parent[f] = find(parent[f])
+    return parent[f]
 
 
-for _ in range(int(input())):
-    count, parent = dict(), dict()
-    for _ in range(int(input())):
-        x, y = input().split()
-        if not x in parent:
-            parent[x] = x
-            count[x] = 1
-        if not y in parent:
-            parent[y] = y
-            count[y] = 1
-        union(x, y)
-        print(count[find(y)])
+def union(a: str, b: str) -> None:
+    root_a = find(a)
+    root_b = find(b)
+    if root_a != root_b:
+        parent[root_b] = root_a
+        number[root_a] += number[root_b]
+
+
+for _ in range(n):
+    parent = dict()
+    number = dict()
+    F = int(input())
+    for _ in range(F):
+        a, b = input().split()
+        if not a in parent:
+            parent[a] = a
+            number[a] = 1
+        if not b in parent:
+            parent[b] = b
+            number[b] = 1
+        union(a, b)
+        print(number[find(a)])

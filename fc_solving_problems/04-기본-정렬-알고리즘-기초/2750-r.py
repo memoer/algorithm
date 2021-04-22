@@ -1,6 +1,7 @@
 n = int(input())
-a = []
+data = []
 for _ in range(n):
-    a.append(int(input()))
-a.sort()
-print("\n".join(map(str, a)))
+    j = int(input())
+    data.append(j)
+data.sort()
+print("\n".join(map(str, data)))

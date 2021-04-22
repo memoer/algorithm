@@ -1,16 +1,17 @@
 # 복습
-test_case = int(input())
-
-for _ in range(test_case):
+for _ in range(int(input())):
+    result = 0
     n, m = map(int, input().split())
-    docs = [(priority, idx) for (idx, priority) in enumerate(map(int, input().split()))]
-    count = 0
+    docs = [
+        (priority, False if idx != m else True)
+        for idx, priority in enumerate(map(int, input().split()))
+    ]
     while True:
-        if docs[0][0] < max(docs, key=lambda x: x[0])[0]:
+        if max(docs)[0] > docs[0][0]:
             docs.append(docs.pop(0))
         else:
-            count += 1
-            item = docs.pop(0)
-            if item[1] == m:
-                print(count)
+            result += 1
+            printed_doc = docs.pop(0)
+            if printed_doc[1]:
+                print(result)
                 break

@@ -1,8 +1,8 @@
 n = int(input())
-arr = []
+result = []
 for _ in range(n):
-    x, y = map(int, input().split())
-    arr.append((x, y))
-arr.sort()
-for x,y in arr:
-    print(f"{x} {y}")
+    x, y = input().split()
+    result.append((int(x), int(y)))
+result.sort(key=lambda x: (x[0], x[1]))
+for x, y in result:
+    print(x, y)
